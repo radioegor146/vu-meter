@@ -1,0 +1,140 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "50201dbb-ce2c-4681-8d0b-b3063868b684")
+	(paper "A4")
+	(lib_symbols)
+	(sheet
+		(at 17.78 39.37)
+		(size 24.13 12.7)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "42b047fd-9314-498c-9c34-628173576b07")
+		(property "Sheetname" "Digital"
+			(at 17.78 38.6584 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "digital.kicad_sch"
+			(at 17.78 52.6546 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "vu-meter-processor"
+				(path "/50201dbb-ce2c-4681-8d0b-b3063868b684"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 17.78 59.69)
+		(size 24.13 12.7)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "8588eb71-d238-4a41-a59b-171191caf880")
+		(property "Sheetname" "IO & Power"
+			(at 17.78 58.9784 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "io_and_power.kicad_sch"
+			(at 17.78 72.9746 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "vu-meter-processor"
+				(path "/50201dbb-ce2c-4681-8d0b-b3063868b684"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 17.78 19.05)
+		(size 24.13 12.7)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "b5a15edd-f079-4332-a725-9b2801ef9020")
+		(property "Sheetname" "Analog"
+			(at 17.78 18.3384 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "analog.kicad_sch"
+			(at 17.78 32.3346 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "vu-meter-processor"
+				(path "/50201dbb-ce2c-4681-8d0b-b3063868b684"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
