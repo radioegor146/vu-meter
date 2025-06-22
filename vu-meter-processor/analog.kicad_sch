@@ -1602,6 +1602,17 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "P.S. Unfourtenately analog version of peak detector \nworked too poorly for low signal levels, so for now \nit is DNP (it is reimplemented in software)\n\nPlace jumper between 2-3"
+		(exclude_from_sim no)
+		(at 189.23 87.376 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f91f6f10-4fdf-42cf-9567-bc68826562a9")
+	)
 	(junction
 		(at 242.57 49.53)
 		(diameter 0)
@@ -2862,7 +2873,7 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 95.25) (xy 111.76 95.25)
+			(xy 111.76 95.25) (xy 180.34 95.25)
 		)
 		(stroke
 			(width 0)
@@ -2889,16 +2900,6 @@
 			(type default)
 		)
 		(uuid "a79907ae-2ce0-4dcb-8f03-b2a0a57ddea6")
-	)
-	(wire
-		(pts
-			(xy 125.73 95.25) (xy 180.34 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a8084042-5ae5-4fe7-8b26-5529b447397f")
 	)
 	(wire
 		(pts
@@ -3272,16 +3273,6 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 30.48) (xy 180.34 30.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d3a476cc-a043-452b-8d5e-79122ab332e4")
-	)
-	(wire
-		(pts
 			(xy 172.72 85.09) (xy 172.72 73.66)
 		)
 		(stroke
@@ -3472,7 +3463,7 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 30.48) (xy 111.76 30.48)
+			(xy 111.76 30.48) (xy 180.34 30.48)
 		)
 		(stroke
 			(width 0)
@@ -3748,7 +3739,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "0554bad4-91ab-4c40-9766-9ceaf79ae540")
 		(property "Reference" "U2"
 			(at 144.018 77.47 0)
@@ -3833,7 +3824,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "0680f84b-12d1-44f8-a33c-825c3d093796")
 		(property "Reference" "R19"
@@ -3901,7 +3892,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "07800955-a867-4776-a058-4282355b6dc0")
 		(property "Reference" "D8"
@@ -4330,7 +4321,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "20b88c70-cae4-4d7e-afc6-b4db73bf9044")
 		(property "Reference" "R13"
@@ -4468,7 +4459,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "2abc15ec-1f39-457c-83c3-9c467ca0993e")
 		(property "Reference" "C12"
@@ -4624,7 +4615,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "3bb1e58a-8e73-45e2-b0b3-64e39b91e412")
 		(property "Reference" "R15"
@@ -4898,7 +4889,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "48a7652f-b8a0-4693-9d3a-9e72437f176d")
 		(property "Reference" "D7"
@@ -5190,7 +5181,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "4cf10241-e812-4d28-ad06-bf20fcce25c9")
 		(property "Reference" "C14"
@@ -5876,7 +5867,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "711a0e17-b4d2-4c3e-bad0-88054d3e78e9")
 		(property "Reference" "R20"
@@ -6004,99 +5995,13 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:D")
-		(at 121.92 30.48 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "7ccb3e2b-1c18-498e-979c-c16d6d2e2af7")
-		(property "Reference" "D4"
-			(at 121.92 24.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "4148"
-			(at 121.92 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_MiniMELF"
-			(at 121.92 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 121.92 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 121.92 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 121.92 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 121.92 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "14096c61-582d-45d9-a733-99427118dc89")
-		)
-		(pin "2"
-			(uuid "bfd08549-a6d5-4a80-8788-65213dbfea2e")
-		)
-		(instances
-			(project "vu-meter-processor"
-				(path "/50201dbb-ce2c-4681-8d0b-b3063868b684/b5a15edd-f079-4332-a725-9b2801ef9020"
-					(reference "D4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 123.19 52.07 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "7f7e2aa2-ed68-4386-a10e-dd7b1ad98e9e")
 		(property "Reference" "R14"
@@ -6296,92 +6201,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:D")
-		(at 121.92 95.25 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "90ec376c-2114-4a33-8a3a-60fd1cb60e09")
-		(property "Reference" "D6"
-			(at 121.92 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "4148"
-			(at 121.92 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_MiniMELF"
-			(at 121.92 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 121.92 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 121.92 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 121.92 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 121.92 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2f0d6363-4ab8-4c11-b3f5-85ac8010ed7e")
-		)
-		(pin "2"
-			(uuid "6dbe1d42-4c46-4e14-be4b-1531d052dbb9")
-		)
-		(instances
-			(project "vu-meter-processor"
-				(path "/50201dbb-ce2c-4681-8d0b-b3063868b684/b5a15edd-f079-4332-a725-9b2801ef9020"
-					(reference "D6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C_Polarized")
 		(at 105.41 64.77 90)
 		(unit 1)
@@ -6456,7 +6275,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "a8e5b572-11cf-496d-9067-58b06773968d")
 		(property "Reference" "D5"
 			(at 118.364 132.08 90)
@@ -6615,7 +6434,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "acb0cc6c-c963-41e1-ba4a-c80b9ddfa3aa")
 		(property "Reference" "C13"
@@ -6825,7 +6644,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "bb649155-f9bc-4c19-afcf-0c7e3119ecb8")
 		(property "Reference" "U2"
@@ -7207,7 +7026,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "cbca7d17-6a7a-4341-acc1-116fbf842589")
 		(property "Reference" "R18"
@@ -7619,7 +7438,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "e5886446-1dab-4c57-81e2-0468f4deea25")
 		(property "Reference" "D3"
@@ -7844,7 +7663,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "f198fe5b-eac8-4b0f-9748-208a48ec9740")
 		(property "Reference" "D1"
 			(at 118.364 67.31 90)
@@ -7932,7 +7751,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "f2ec5bd0-fc0a-4592-8693-db9e4fedc547")
 		(property "Reference" "U2"
 			(at 144.272 142.494 0)
@@ -8017,7 +7836,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "fb196c23-a96e-4db4-a7c8-6b2fd224f9a2")
 		(property "Reference" "C22"
@@ -8087,7 +7906,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "fd300ce6-9e28-4ba9-a0e8-bae0081ad340")
 		(property "Reference" "D2"

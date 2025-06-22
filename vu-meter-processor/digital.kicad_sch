@@ -2062,7 +2062,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c33d2a90-c142-4e26-a153-69a913232723")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0101"
 			(at 147.32 83.82 0)
 			(effects
 				(font
@@ -2112,7 +2112,7 @@
 		(instances
 			(project "vu-meter-processor"
 				(path "/50201dbb-ce2c-4681-8d0b-b3063868b684/42b047fd-9314-498c-9c34-628173576b07"
-					(reference "#PWR?")
+					(reference "#PWR0101")
 					(unit 1)
 				)
 			)

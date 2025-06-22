@@ -100,19 +100,16 @@ void ADCInit() {
   ADC_Cmd(ADC1, ENABLE);
 }
 
-uint16_t l_value;
-uint16_t r_value;
-
-void ADCRead() {
+void ADCRead(uint16_t* l, uint16_t* r) {
   ADC_RegularChannelConfig(ADC1, ADC_Channel_0, 1, ADC_SampleTime_11Cycles);
   ADC_SoftwareStartConvCmd(ADC1, ENABLE);
   while (!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)) {}
-  l_value = ADC_GetConversionValue(ADC1);
+  *l = ADC_GetConversionValue(ADC1);
 
   ADC_RegularChannelConfig(ADC1, ADC_Channel_1, 1, ADC_SampleTime_11Cycles);
   ADC_SoftwareStartConvCmd(ADC1, ENABLE);
   while (!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)) {}
-  r_value = ADC_GetConversionValue(ADC1);
+  *r = ADC_GetConversionValue(ADC1);
 }
 
 void Init() {
@@ -128,8 +125,8 @@ uint16_t kConversionMap[70] = { 11, 12, 13, 14, 15, 16, 18, 19, 21, 23, 25, 27, 
 uint8_t ConvertToLEDs(uint16_t value) {
   for (int i = 0; i < sizeof(kConversionMap) / sizeof(kConversionMap[0]); i++) {
     if (value < kConversionMap[i]) {
-      if (i == 0) {
-        return 0;
+      if (i <= 1) {
+        return 1;
       }
       return i - 1;
     }
@@ -140,11 +137,30 @@ uint8_t ConvertToLEDs(uint16_t value) {
 int main() {
   Init();
 
-  uint8_t value = 0;
+  uint16_t l_value = 0;
+  uint16_t r_value = 0;
+
+  int32_t l_buffered_value = 0;
+  int32_t r_buffered_value = 0;
 
   for (;;) {
-    Delay_Ms(10);
-    ADCRead();
-    SendLevel(ConvertToLEDs(l_value), ConvertToLEDs(r_value));
+    ADCRead(&l_value, &r_value);
+    int32_t real_l_value = l_value << 16;
+    int32_t real_r_value = r_value << 16;
+    l_buffered_value = real_l_value > l_buffered_value ? real_l_value : l_buffered_value;
+    r_buffered_value = real_r_value > r_buffered_value ? real_r_value : r_buffered_value;
+    SendLevel(ConvertToLEDs(l_buffered_value >> 16), ConvertToLEDs(r_buffered_value >> 16));
+    if (l_buffered_value > 0) {
+      l_buffered_value -= l_buffered_value >> 8;
+    }
+    if (l_buffered_value < 0) {
+      l_buffered_value = 0;
+    }
+    if (r_buffered_value > 0) {
+      r_buffered_value -= r_buffered_value >> 8;
+    }
+    if (r_buffered_value < 0) {
+      r_buffered_value = 0;
+    }
   }
 }
