@@ -9,7 +9,7 @@
    id="svg1"
    inkscape:version="1.4 (86a8ad7, 2024-10-11)"
    sodipodi:docname="panel-transparent.svg"
-   inkscape:export-filename="panel-v1.svg"
+   inkscape:export-filename="panel-v1.pdf"
    inkscape:export-xdpi="300"
    inkscape:export-ydpi="300"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -26,9 +26,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="1"
-     inkscape:cx="172"
-     inkscape:cy="148.5"
+     inkscape:zoom="2"
+     inkscape:cx="181.5"
+     inkscape:cy="135.75"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="3832"
@@ -1017,9 +1017,10 @@
   <g
      inkscape:groupmode="layer"
      id="layer4"
-     inkscape:label="new_cutout">
+     inkscape:label="new_cutout"
+     style="display:inline">
     <path
-       style="fill:#ffffff;fill-opacity:0;stroke:#000000;stroke-width:0.1;stroke-linejoin:round;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:#ffffff;fill-opacity:0;stroke:#000000;stroke-width:0.1;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
        d="M 9.9999063,9.9999055 V 50.450149 H 440.99993 V 9.9999055 Z"
        id="path5" />
   </g>

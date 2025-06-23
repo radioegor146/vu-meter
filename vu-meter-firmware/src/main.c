@@ -15,8 +15,7 @@ void GPIOInitPin(GPIO_TypeDef* gpio, uint16_t pin, GPIOSpeed_TypeDef speed,
 void GPIOInit() {
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB, ENABLE);
 
-  GPIOInitPin(INPUT_L_PORT, INPUT_L_PIN, GPIO_Speed_50MHz, GPIO_Mode_AIN);
-  GPIOInitPin(INPUT_R_PORT, INPUT_R_PIN, GPIO_Speed_50MHz, GPIO_Mode_AIN);
+  GPIOInitPin(INPUT_PORT, INPUT_PIN, GPIO_Speed_50MHz, GPIO_Mode_AIN);
 
   GPIOInitPin(SCK_PORT, SCK_PIN, GPIO_Speed_50MHz, GPIO_Mode_AF_PP);
   GPIOInitPin(MOSI_PORT, MOSI_PIN, GPIO_Speed_50MHz, GPIO_Mode_AF_PP);
@@ -42,7 +41,7 @@ void SPIInit() {
   SPI_Cmd(SPI1, ENABLE);
 }
 
-uint8_t leds[20] = {0};
+uint8_t leds[10] = {0};
 
 void SPISendLEDs() {
   for (int i = 0; i < sizeof(leds); i++) {
@@ -57,23 +56,14 @@ void SPISendLEDs() {
   GPIO_ResetBits(LATCH_PORT, LATCH_PIN);
 }
 
-void SendLevel(uint8_t l, uint8_t r) {
+void SendLevel(uint8_t value) {
   for (int i = 0; i < sizeof(leds); i++) {
     leds[i] = 0;
   }
   int bit = 1;
-  while (l) {
+  while (value) {
     leds[bit / 8] |= (1 << (bit % 8));
-    l--;
-    bit++;
-    if (bit % 8 == 0) {
-      bit++;
-    }
-  }
-  bit = 1 + 5 * 8 * 2;
-  while (r) {
-    leds[bit / 8] |= (1 << (bit % 8));
-    r--;
+    value--;
     bit++;
     if (bit % 8 == 0) {
       bit++;
@@ -100,16 +90,11 @@ void ADCInit() {
   ADC_Cmd(ADC1, ENABLE);
 }
 
-void ADCRead(uint16_t* l, uint16_t* r) {
+uint16_t ADCRead() {
   ADC_RegularChannelConfig(ADC1, ADC_Channel_0, 1, ADC_SampleTime_11Cycles);
   ADC_SoftwareStartConvCmd(ADC1, ENABLE);
   while (!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)) {}
-  *l = ADC_GetConversionValue(ADC1);
-
-  ADC_RegularChannelConfig(ADC1, ADC_Channel_1, 1, ADC_SampleTime_11Cycles);
-  ADC_SoftwareStartConvCmd(ADC1, ENABLE);
-  while (!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)) {}
-  *r = ADC_GetConversionValue(ADC1);
+  return ADC_GetConversionValue(ADC1);
 }
 
 void Init() {
@@ -137,30 +122,18 @@ uint8_t ConvertToLEDs(uint16_t value) {
 int main() {
   Init();
 
-  uint16_t l_value = 0;
-  uint16_t r_value = 0;
-
-  int32_t l_buffered_value = 0;
-  int32_t r_buffered_value = 0;
+  int32_t buffered_value = 0;
 
   for (;;) {
-    ADCRead(&l_value, &r_value);
-    int32_t real_l_value = l_value << 16;
-    int32_t real_r_value = r_value << 16;
-    l_buffered_value = real_l_value > l_buffered_value ? real_l_value : l_buffered_value;
-    r_buffered_value = real_r_value > r_buffered_value ? real_r_value : r_buffered_value;
-    SendLevel(ConvertToLEDs(l_buffered_value >> 16), ConvertToLEDs(r_buffered_value >> 16));
-    if (l_buffered_value > 0) {
-      l_buffered_value -= l_buffered_value >> 8;
+    uint16_t value = ADCRead();
+    int32_t real_value = value << 16;
+    buffered_value = real_value > buffered_value ? real_value : buffered_value;
+    SendLevel(ConvertToLEDs(buffered_value >> 16));
+    if (buffered_value > 0) {
+      buffered_value -= buffered_value >> 9;
     }
-    if (l_buffered_value < 0) {
-      l_buffered_value = 0;
-    }
-    if (r_buffered_value > 0) {
-      r_buffered_value -= r_buffered_value >> 8;
-    }
-    if (r_buffered_value < 0) {
-      r_buffered_value = 0;
+    if (buffered_value < 0) {
+      buffered_value = 0;
     }
   }
 }

@@ -8,8 +8,8 @@ Consists of:
 
 ## Processor board
 
-The processor board is a simple board with converter from balanced input to unbalanced and a simple peak detector.
-Then it uses CH32X035F7P6 MCU to convert from analog domain to digital for output to SPI for shift registers.
+The processor board is a simple board with converter from balanced input to unbalanced with 
+2 x CH32X035F7P6 MCU to convert from analog domain to digital for output to SPI for shift registers.
 
 ## Indicator board
 
